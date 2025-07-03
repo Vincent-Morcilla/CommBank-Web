@@ -58,15 +58,14 @@ export function GoalManager(props: Props) {
     setEmojiPickerIsOpen(false)
 
     const updatedGoal: Goal = {
-      ...goal,
-      icon: emoji.native,
-      name: name ?? goal.name,
-      targetDate: targetDate ?? goal.targetDate,
-      targetAmount: targetAmount ?? goal.targetAmount,
+      ...props.goal,
+      icon: emoji.native ?? props.goal.icon,
+      name: name ?? props.goal.name,
+      targetDate: targetDate ?? props.goal.targetDate,
+      targetAmount: targetAmount ?? props.goal.targetAmount,
     }
 
-    dispatch(updateGoalRedux(updatedGoal))
-    updateGoalApi(goal.id, updatedGoal)
+    updateGoalApi(props.goal.id, updatedGoal)
   }
 
   useEffect(() => {
